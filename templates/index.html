@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Travel Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <h1 class="title">🌍 Smart Travel Assistant</h1>
+      <p class="subtitle">Pick a date — get a travel plan</p>
+    </header>
+
+    <main>
+      <!-- Form -->
+     <form id="tripForm" class="card glass form-row">
+  <div class="form-row-item">
+    <label>Source City
+      <input type="text" name="source_city" placeholder="e.g., Mumbai" required>
+    </label>
+  </div>
+  <div class="form-row-item">
+    <label>Destination City
+      <input type="text" name="dest_city" placeholder="e.g., Delhi" required>
+    </label>
+  </div>
+  <div class="form-row-item">
+    <label>From Date
+      <input type="date" name="from_date" required>
+    </label>
+  </div>
+  <div class="form-row-item">
+    <label>To Date
+      <input type="date" name="to_date" required>
+    </label>
+  </div>
+  <div class="form-row-item form-actions">
+  <span id="loadingIndicator" class="loading hidden">Analyzing...</span>
+  <button type="submit" id="analyzeBtn" class="btn">Analyze Trip</button>
+</div>
+</form>
+
+      <!-- Results -->
+      <section id="results" class="results hidden">
+        <div class="top-grid">
+          <div class="card glass">
+           <h3 id="srcTitle">Source City Summary</h3>
+           <p id="srcWeather">—</p>
+           <div class="meta" id="srcMeta">—</div>
+        </div>
+
+        <div class="card glass">
+          <h3 id="dstTitle">Destination Trip Summary</h3>
+          <p id="dstWeather">—</p>
+          <div class="meta" id="dstMeta">—</div>
+        </div>
+          <div class="card glass score-card">
+            <h3>Trip Score</h3>
+            <div id="score" class="score-value">—</div>
+            <div id="scoreBreak" class="score-break">—</div>
+            <div id="bestDay" class="best-day">—</div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card glass">
+            <h3>Mode Recommendation</h3>
+            <p id="mode">—</p>
+            <ul id="modeOrder"></ul>
+          </div>
+
+          <div class="card glass">
+            <h3>Time & Cost Estimates</h3>
+            <div id="dtc">—</div>
+          </div>
+        <div class="grid">
+          <div class="card glass">
+            <h3>Packing Tips</h3>
+            <ul id="tips"></ul>
+          </div>
+
+          <div class="card glass">
+            <h3>News & Alerts</h3>
+            <ul id="news"></ul>
+          </div>
+        </div>
+        
+        <div class="grid"> 
+          <div class="card glass booking-card">
+            <h3>Booking Assistant</h3>
+            <div id="bookingLinks"></div>
+          </div>
+
+          <div class="card glass essentials-card">
+            <h3>Nearby Essentials</h3>
+            <ul id="essentials"></ul>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
+
